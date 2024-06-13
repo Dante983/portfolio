@@ -9,14 +9,14 @@ var pw = false;
 let pwd = false;
 var commands = [];
 
-setTimeout(function () {
+setTimeout(function() {
   loopLines(banner, "", 80);
   textarea.focus();
 }, 100);
 
 var texter = document.getElementById("texter");
-texter.addEventListener("blur", function () {
-  setTimeout(function () {
+texter.addEventListener("blur", function() {
+  setTimeout(function() {
     texter.focus();
   }, 0);
 });
@@ -104,7 +104,7 @@ function commander(cmd) {
     //   break;
     case "sudo":
       addLine("Oh no, you're not admin...", "color2", 80);
-      setTimeout(function () {
+      setTimeout(function() {
         window.open("https://www.youtube.com/watch?v=_9y7aQr2-pw");
       }, 1000);
       break;
@@ -132,14 +132,14 @@ function commander(cmd) {
       break;
     case "email":
       addLine(
-        'Opening mailto:<a href="mailto:forrest@fkcodes.com">forrest@fkcodes.com</a>...',
+        'Opening mailto:<a href="mailto:savicn209@gmail.com">savicn209@gmail.com</a>...',
         "color2",
         80,
       );
       newTab(email);
       break;
     case "clear":
-      setTimeout(function () {
+      setTimeout(function() {
         terminal.innerHTML = '<a id="before"></a>';
         before = document.getElementById("before");
       }, 1);
@@ -179,7 +179,7 @@ function commander(cmd) {
 }
 
 function newTab(link) {
-  setTimeout(function () {
+  setTimeout(function() {
     window.open(link, "_blank");
   }, 500);
 }
@@ -194,7 +194,7 @@ function addLine(text, style, time) {
       t += text.charAt(i);
     }
   }
-  setTimeout(function () {
+  setTimeout(function() {
     var next = document.createElement("p");
     next.innerHTML = t;
     next.className = style;
@@ -206,7 +206,7 @@ function addLine(text, style, time) {
 }
 
 function loopLines(name, style, time) {
-  name.forEach(function (item, index) {
+  name.forEach(function(item, index) {
     addLine(item, style, index * time);
   });
 }
