@@ -8,6 +8,21 @@ body {
   background: #211d1b;
   font-family: cursor, monospace;
   overflow-x: hidden;
+  background-image: url(../86100-firewatch-games-hd-4k-minimalism-minimalist-artist.jpg);
+  background-size: cover; /* <------ */
+  background-repeat: no-repeat;
+  /* background-position: center center; */
+}
+
+.terminal {
+  position: relative;
+  /* max-width: 800px; /* Adjust as needed */ */
+  margin: 50px auto; /* Centering the terminal */
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+  border-radius: 10px;
+  color: #00ff00; /* Optional: Green text for a terminal look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Optional: Adding some shadow */
 }
 ::selection {
   color: #211830;
