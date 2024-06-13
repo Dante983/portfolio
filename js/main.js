@@ -9,28 +9,19 @@ var pw = false;
 let pwd = false;
 var commands = [];
 
-setTimeout(function() {
+setTimeout(function () {
   loopLines(banner, "", 80);
   textarea.focus();
 }, 100);
 
 var texter = document.getElementById("texter");
-texter.addEventListener("blur", function() {
-  setTimeout(function() {
+texter.addEventListener("blur", function () {
+  setTimeout(function () {
     texter.focus();
   }, 0);
 });
 
 window.addEventListener("keyup", enterKey);
-
-console.log(
-  "%cyou hacked my password!ðÿ˜ ",
-  "color: #04ff00; font-weight: bold; font-size: 24px;",
-);
-console.log(
-  "%cpassword: '" + password + "' - i wonder what it does?ðÿ¤”",
-  "color: grey",
-);
 
 //init
 textarea.value = "";
@@ -46,14 +37,6 @@ function enterKey(e) {
     command.innerHTML = et.repeat(w);
     if (textarea.value === password) {
       pwd = true;
-      console.log(
-        "OPAAAAAA",
-        "color: #04ff00; font-weight: bold; font-size: 24px;",
-      );
-      console.log(
-        "%cpassword: '" + password + "' - i wonder what it does?ðÿ¤”",
-        "color: grey",
-      );
     }
     if (pwd && e.keyCode == 13) {
       loopLines(secret, "color2 margin", 120);
@@ -73,7 +56,7 @@ function enterKey(e) {
     if (e.keyCode == 13) {
       commands.push(command.innerHTML);
       git = commands.length;
-      addLine("visitor@fkcodes.com:~$ " + command.innerHTML, "no-animation", 0);
+      addLine("visitor@nikolasavic:~$ " + command.innerHTML, "no-animation", 0);
       commander(command.innerHTML.toLowerCase());
       command.innerHTML = "";
       textarea.value = "";
@@ -112,7 +95,7 @@ function commander(cmd) {
     //   break;
     case "sudo":
       addLine("Oh no, you're not admin...", "color2", 80);
-      setTimeout(function() {
+      setTimeout(function () {
         window.open("https://www.youtube.com/watch?v=_9y7aQr2-pw");
       }, 1000);
       break;
@@ -120,6 +103,10 @@ function commander(cmd) {
       loopLines(social, "color2 margin", 80);
       break;
     case "secret":
+      console.log(
+        "You could try password: '" + password + "' - i wonder what it does?",
+      );
+
       liner.classList.add("password");
       pw = true;
       break;
@@ -128,7 +115,7 @@ function commander(cmd) {
       break;
     case "password":
       addLine(
-        "<span class=\"inherit\"> Lol! You're joking, right? You're gonna have to try harder than that!ðŸ˜‚</span>",
+        "<span class=\"inherit\"> Lol! You're joking, right? You're gonna have to try harder than that!‚</span>",
         "error",
         100,
       );
@@ -147,7 +134,7 @@ function commander(cmd) {
       newTab(email);
       break;
     case "clear":
-      setTimeout(function() {
+      setTimeout(function () {
         terminal.innerHTML = '<a id="before"></a>';
         before = document.getElementById("before");
       }, 1);
@@ -187,7 +174,7 @@ function commander(cmd) {
 }
 
 function newTab(link) {
-  setTimeout(function() {
+  setTimeout(function () {
     window.open(link, "_blank");
   }, 500);
 }
@@ -202,7 +189,7 @@ function addLine(text, style, time) {
       t += text.charAt(i);
     }
   }
-  setTimeout(function() {
+  setTimeout(function () {
     var next = document.createElement("p");
     next.innerHTML = t;
     next.className = style;
@@ -214,7 +201,7 @@ function addLine(text, style, time) {
 }
 
 function loopLines(name, style, time) {
-  name.forEach(function(item, index) {
+  name.forEach(function (item, index) {
     addLine(item, style, index * time);
   });
 }

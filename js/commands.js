@@ -1,26 +1,24 @@
-// var youtube = "https://www.youtube.com/fknight/";
-// var twitter = "https://www.twitter.com/forrestpknight/";
-var password = "fkcodes";
+var password = "primime";
 var linkedin = "https://www.linkedin.com/in/nikola-savi%C4%87-10b8b9179/";
-// var instagram = "https://www.instagram.com/forrestpknight/";
 var github = "https://github.com/Dante983";
 var email = "mailto:savicn209@gmail.com";
 
 whois = [
   "<br>",
-  "Hey, I'm Forrest!ðŸ‘‹",
-  "I'm a software engineer and content creator, who builds engaging websites like this one",
-  "and makes YouTube videos about computer science & software engineering.",
-  "After graduating with a Bachelor's in Computer Science, I worked professionally",
-  "as a software engineer building enterprise web applications for Fortune 500 companies.",
-  "While doing all of that, I documented my coding journey on YouTube - trying to enlighten",
-  "the next generation of developers and help them navigate the crazy world that is software",
-  "engineering & computer science.",
-  "Before I knew it, that online presence took on a life of its own, to the point where I knew",
-  "I needed to make the jump from software engineering to full time content creation - strike while",
-  "the iron's hot.",
-  "Now, I make videos about software engineering and computer science, building anything my heart desires,",
-  "like this terminal website.",
+  "Hey, I'm Nikola!",
+  "I am a passionate web developer with over four years of experience in creating efficient and user-friendly applications.",
+  "My expertise lies in a range of technologies, with a strong proficiency in PHP and the Laravel framework,",
+  "which enables me to build robust and scalable web applications.",
+  "In addition to backend development, I excel in frontend technologies such as JavaScript, Angular.js, React.js, and Node.js,",
+  "allowing me to craft interactive and responsive user interfaces that significantly enhance user experiences.",
+  "I also have extensive experience with various databases including MySQL, ClickHouse, and MongoDB, ensuring that I can design",
+  "and optimize efficient database structures to support application functionality and performance.",
+  "Moreover, I have successfully integrated third-party services like RabbitMQ and Redis into projects to enhance real-time communication",
+  "and data processing capabilities. My familiarity with Git facilitates smooth collaboration within development teams and efficient code management.",
+  "Throughout my career, I have been dedicated to continuous learning and improvement, always striving to stay updated with the latest",
+  "technologies and best practices in the industry.",
+  "My journey as a developer has been driven by a passion for innovation and a commitment to delivering high-quality solutions.",
+  "I look forward to the opportunity to bring my expertise and enthusiasm to new and exciting projects.",
   "<br>",
 ];
 
@@ -73,7 +71,7 @@ projects = [
 
 help = [
   "<br>",
-  '<span class="command">whois</span>          Who is Forrest?',
+  '<span class="command">whois</span>          Who is Nikola?',
   '<span class="command">whoami</span>         Who are you?',
   // '<span class="command">video</span>          View YouTube videos',
   '<span class="command">social</span>         Display social networks',
@@ -96,7 +94,7 @@ banner = [
   "    | |\\ \\| |   | |   |  __'.  | |    | | | |   _   / ____ \\       '.___\\-.   / ____ \\     \\ \\ / /    | | | |        ",
   "   _| |_\\   |_ _| |_ _| |  \\ \\_\\  \\--'  /_| |__/ |_/ /    \\ \\_    |\\____) |_/ /    \\ \\_    /\\ ' /    _| |_\\ \\.___.'\\ ",
   "  |_____|\\____|_____|____||____|\\.____.'|________|____|  |____|   |_______.'____|  |____|    \\_/    |_____|\\._____.' ",
-  "",
+  "<br> ",
   '<span class="color2">Welcome to my interactive web terminal.</span>',
   '<span class="color2">For a list of available commands, type</span> <span class="command">\'help\'</span><span class="color2">.</span>',
 ];
