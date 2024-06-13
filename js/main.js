@@ -24,11 +24,11 @@ texter.addEventListener("blur", function() {
 window.addEventListener("keyup", enterKey);
 
 console.log(
-  "%cYou hacked my password!ðŸ˜ ",
+  "%cyou hacked my password!ðÿ˜ ",
   "color: #04ff00; font-weight: bold; font-size: 24px;",
 );
 console.log(
-  "%cPassword: '" + password + "' - I wonder what it does?ðŸ¤”",
+  "%cpassword: '" + password + "' - i wonder what it does?ðÿ¤”",
   "color: grey",
 );
 
@@ -46,6 +46,14 @@ function enterKey(e) {
     command.innerHTML = et.repeat(w);
     if (textarea.value === password) {
       pwd = true;
+      console.log(
+        "OPAAAAAA",
+        "color: #04ff00; font-weight: bold; font-size: 24px;",
+      );
+      console.log(
+        "%cpassword: '" + password + "' - i wonder what it does?ðÿ¤”",
+        "color: grey",
+      );
     }
     if (pwd && e.keyCode == 13) {
       loopLines(secret, "color2 margin", 120);
