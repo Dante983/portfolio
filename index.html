@@ -1,10 +1,15 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>NIKOLA SAVIC | Terminal</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.6/css/jetbrains-mono.min.css"
+    />
     <link
       rel="stylesheet"
       type="text/css"
@@ -15,29 +20,59 @@
   </head>
 
   <body>
-    <div class="terminal">
-      <div id="terminal">
-        <p class="color2 margin"><br /></p>
-        <a id="before"></a>
-      </div>
-      <div id="command" onclick="$('texter').focus();">
-        <textarea
-          type="text"
-          id="texter"
-          onkeyup="typeIt(this, event)"
-          onkeydown="typeIt(this, event); 
-                   moveIt(this.value.length, event)"
-          onkeypress="typeIt(this, event);"
-          autofocus=""
-        ></textarea>
-        <div id="liner">
-          <span id="typer"></span
-          ><b class="cursor" id="cursor" style="left: 0px">█</b>
+    <div class="terminal-container">
+      <div class="terminal-header">
+        <div class="terminal-tabs">
+          <div class="terminal-tab active">main.sh</div>
+          <div class="terminal-tab">projects.js</div>
+          <div class="terminal-tab">about.md</div>
+        </div>
+        <div class="terminal-controls">
+          <div class="terminal-control minimize"></div>
+          <div class="terminal-control maximize"></div>
+          <div class="terminal-control close"></div>
         </div>
       </div>
-      <script src="js/caret.js"></script>
-      <script src="js/commands.js"></script>
-      <script src="js/main.js"></script>
+      
+      <div class="terminal">
+        <div id="terminal-content">
+          <div id="terminal">
+            <p class="color2 margin"><br /></p>
+            <a id="before"></a>
+          </div>
+        </div>
+        
+        <div id="command" onclick="$('texter').focus();">
+          <textarea
+            type="text"
+            id="texter"
+            onkeyup="typeIt(this, event)"
+            onkeydown="typeIt(this, event); moveIt(this.value.length, event)"
+            onkeypress="typeIt(this, event);"
+            autofocus=""
+          ></textarea>
+          <div id="liner">
+            <span id="typer"></span><b class="cursor" id="cursor">█</b>
+          </div>
+        </div>
+        
+        <div class="terminal-statusline">
+          <div class="statusline-left">
+            <div class="statusline-item mode">NORMAL</div>
+            <div class="statusline-item branch">main</div>
+            <div class="statusline-item">visitor@nikolasavic</div>
+          </div>
+          <div class="statusline-right">
+            <div class="statusline-item">UTF-8</div>
+            <div class="statusline-item">JavaScript</div>
+            <div class="statusline-item">100%</div>
+          </div>
+        </div>
+      </div>
     </div>
+    
+    <script src="js/caret.js"></script>
+    <script src="js/commands.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
