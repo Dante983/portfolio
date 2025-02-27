@@ -845,7 +845,7 @@ var whoami = [
 var social = [
   "<br>",
   '<span class="color2">LinkedIn: </span><a href="https://www.linkedin.com/in/nikola-savić-10b8b9179/" target="_blank">linkedin.com/in/nikola-savić-10b8b9179</a>',
-  '<span class="color2">GitHub: </span><a href="https://github.com/username" target="_blank">github.com/username</a>',
+  '<span class="color2">GitHub: </span><a href="https://github.com/Dante983" target="_blank">github.com/Dante983</a>',
   "<br>"
 ];
 
