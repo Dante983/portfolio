@@ -28,18 +28,95 @@ var fileSystem = {
         content: {
           "readme.txt": {
             type: "file",
-            content: "This directory contains information about my projects."
+            content: `# My Projects Portfolio
+
+## Active Projects
+
+### 0. WebShop (PHP/Laravel)
+An e-commerce platform for selling digital and physical products
+
+- Laravel application with blade frontend
+- Advanced product search and filtering
+- Order processing and inventory management
+- Integrated payment gateway
+- Admin panel for managing products and orders
+- Mysql database with Redis caching
+- Repository: github.com/Dante983/webshop
+
+### 1. Snippetbox (Go)
+A secure web application for creating and sharing text snippets
+
+- Built with Go and MySQL
+- Features user authentication and session management
+- Clean architecture with MVC pattern
+- Secure password hashing and CSRF protection
+- Repository: github.com/Dante983/snippetbox
+
+### 2. Pet Shop v2 (PHP/Laravel)
+Modern pet shop management system
+
+- Full-stack Laravel application
+- Advanced inventory tracking system
+- Customer relationship management
+- Order processing and fulfillment
+- Integrated payment gateway
+- Repository: github.com/Dante983/pet-shop-v2
+
+### 3. Portfolio Terminal (JavaScript)
+Interactive terminal-based portfolio website
+
+- Custom terminal emulator in JavaScript
+- Unix-like command system
+- Easter eggs and animations
+- Responsive design
+- Repository: github.com/Dante983/portfolio
+
+### 4. Greenlight (Go)
+RESTful JSON API for movie management
+
+- Built with Go
+- PostgreSQL database
+- JWT authentication
+- Rate limiting
+- Comprehensive API documentation
+- Repository: github.com/Dante983/greenlight
+
+### 5. Neovim Config (Lua)
+Personalized development environment
+
+- Custom Neovim configuration
+- LSP integration
+- Telescope fuzzy finder
+- Custom keybindings
+- Git integration
+- Repository: github.com/Dante983/nvim
+
+## Tech Stack Used
+
+- Languages: Go, PHP, JavaScript, Lua
+- Frameworks: Laravel, React, Vue.js
+- Databases: MySQL, PostgreSQL, MongoDB
+- Tools: Docker, Git, Redis, RabbitMQ
+
+## Future Projects
+
+- Developing a personal knowledge management system
+- Building a webshop for digital products
+- Creating a social media platform for developers
+
+For more information about my projects, visit:
+              github.com / Dante983`
           }
         }
       },
       "skills.json": {
         type: "file",
         content: `{
-  "languages": ["PHP", "JavaScript", "HTML", "CSS"],
-  "frameworks": ["Laravel", "Angular", "React", "Node.js"],
-  "databases": ["MySQL", "ClickHouse", "MongoDB"],
-  "tools": ["Git", "RabbitMQ", "Redis"]
-}`
+    "languages": ["PHP", "JavaScript", "Python", "Go"],
+    "frameworks": ["Laravel", "React.js", "Node.js", "Vue.js"],
+    "databases": ["MySQL", "ClickHouse", "MongoDB"],
+    "tools": ["Git", "RabbitMQ", "Redis", "Docker"]
+  }`
       },
       "contact.txt": {
         type: "file",
@@ -58,14 +135,14 @@ var fileSystem = {
   }
 };
 
-setTimeout(function () {
+setTimeout(function() {
   loopLines(banner, "", 80);
   textarea.focus();
 }, 100);
 
 var texter = document.getElementById("texter");
-texter.addEventListener("blur", function () {
-  setTimeout(function () {
+texter.addEventListener("blur", function() {
+  setTimeout(function() {
     texter.focus();
   }, 0);
 });
@@ -79,7 +156,7 @@ terminalTabs.forEach(tab => {
   tab.addEventListener('click', function() {
     terminalTabs.forEach(t => t.classList.remove('active'));
     this.classList.add('active');
-    
+
     // Set mode based on file extension
     const fileName = this.textContent;
     if (fileName.endsWith('.sh')) {
@@ -87,7 +164,7 @@ terminalTabs.forEach(tab => {
       document.querySelector('.statusline-item:last-child').textContent = "Shell";
     } else if (fileName.endsWith('.js')) {
       document.querySelector('.statusline-item.mode').textContent = "INSERT";
-      document.querySelector('.statusline-item:last-child').textContent = "JavaScript"; 
+      document.querySelector('.statusline-item:last-child').textContent = "JavaScript";
     } else if (fileName.endsWith('.md')) {
       document.querySelector('.statusline-item.mode').textContent = "VISUAL";
       document.querySelector('.statusline-item:last-child').textContent = "Markdown";
@@ -134,43 +211,43 @@ function checkKonami(e) {
 function activateEasterEgg(type) {
   if (easterEggs[type] && !easterEggs[type].found) {
     easterEggs[type].found = true;
-    
-    switch(type) {
+
+    switch (type) {
       case "konami":
         addLine("<br>", "", 0);
         addLine(easterEggs[type].reward, "success", 0);
-        
+
         // Create many more shooting stars with better positioning and timing
         const starCount = 30; // Increased from 10 to 30
         const duration = 6000; // Total duration of the effect in ms
-        
+
         // Create stars in batches for a more natural effect
         for (let batch = 0; batch < 3; batch++) {
           setTimeout(() => {
-            for (let i = 0; i < starCount/3; i++) {
+            for (let i = 0; i < starCount / 3; i++) {
               setTimeout(() => {
                 const star = document.createElement('div');
                 star.className = 'shooting-star';
-                
+
                 // Randomize starting positions across the entire screen
                 star.style.top = Math.random() * 80 + '%';
                 star.style.left = Math.random() * 80 + '%';
-                
+
                 // Randomize size for more variety
                 const size = 2 + Math.random() * 4;
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-                
+                star.style.width = `${size} px`;
+                star.style.height = `${size} px`;
+
                 // Randomize animation duration for more natural movement
                 const speed = 2 + Math.random() * 2;
-                star.style.animationDuration = `${speed}s`;
-                
+                star.style.animationDuration = `${speed} s`;
+
                 // Randomize animation direction
                 const angle = Math.random() * 60 + 30; // Between 30 and 90 degrees
                 star.style.transform = `rotate(${angle}deg)`;
-                
+
                 document.body.appendChild(star);
-                
+
                 // Remove star after animation completes
                 setTimeout(() => {
                   if (star.parentNode) {
@@ -182,57 +259,57 @@ function activateEasterEgg(type) {
           }, batch * 1500); // Stagger batches
         }
         break;
-        
+
       case "matrix":
         addLine("<br>", "", 0);
         addLine(easterEggs[type].reward, "success", 0);
-        
+
         // Create Matrix rain container with initial opacity 0
         const matrixRain = document.createElement('div');
         matrixRain.className = 'matrix-rain';
         matrixRain.style.opacity = '0';
         document.body.appendChild(matrixRain);
-        
+
         // Fade in the matrix effect
         setTimeout(() => {
           matrixRain.style.transition = 'opacity 1s ease-in';
           matrixRain.style.opacity = '1';
         }, 100);
-        
+
         // Create Matrix columns
         const characters = "日ﾊﾐﾋｰｳｼﾅﾓﾆｻﾜﾂｵﾘｱﾎﾃﾏｹﾒｴｶｷﾑﾕﾗｾﾈｽﾀﾇﾍｦｲｸｺｿﾁﾄﾉﾌﾔﾖﾙﾚﾛﾝ1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         const columns = Math.floor(window.innerWidth / 30);
-        
+
         for (let i = 0; i < columns; i++) {
           const column = document.createElement('div');
           column.className = 'matrix-column';
           column.style.left = (i * 30) + 'px';
-          
+
           // Random speed and delay for each column
           const speed = 3 + Math.random() * 5;
           const delay = Math.random() * 2;
           column.style.animationDuration = speed + 's';
           column.style.animationDelay = delay + 's';
-          
+
           // Fill column with random characters
           const columnHeight = Math.floor(Math.random() * 15) + 10;
           let columnContent = '';
-          
+
           for (let j = 0; j < columnHeight; j++) {
             const char = characters.charAt(Math.floor(Math.random() * characters.length));
             const opacity = (1 - (j / columnHeight)) * 0.8 + 0.2;
-            columnContent += `<span style="opacity: ${opacity}">${char}</span><br>`;
+            columnContent += `< span style = "opacity: ${opacity}" > ${char}</span > <br>`;
           }
-          
+
           column.innerHTML = columnContent;
           matrixRain.appendChild(column);
         }
-        
+
         // Fade out and remove Matrix effect after a few seconds
         setTimeout(() => {
           matrixRain.style.transition = 'opacity 1.5s ease-out';
           matrixRain.style.opacity = '0';
-          
+
           // Remove from DOM after fade out completes
           setTimeout(() => {
             if (matrixRain.parentNode) {
@@ -241,21 +318,21 @@ function activateEasterEgg(type) {
           }, 1500);
         }, 6500); // Start fade out after 6.5 seconds
         break;
-        
+
       case "nyancat":
         addLine("<br>", "", 0);
         addLine(easterEggs[type].reward, "success", 0);
-        
+
         const nyanCat = document.createElement('div');
         nyanCat.className = 'nyan-cat';
         nyanCat.innerHTML = `
-          <div class="cat-container">
-            <div class="rainbow"></div>
-            <div class="cat-image"></div>
-          </div>
-        `;
+    <div class="cat-container">
+      <div class="rainbow"></div>
+      <div class="cat-image"></div>
+    </div>
+    `;
         document.body.appendChild(nyanCat);
-        
+
         setTimeout(() => {
           if (nyanCat.parentNode) {
             document.body.removeChild(nyanCat);
@@ -268,21 +345,21 @@ function activateEasterEgg(type) {
 
 // Unix-like command handler
 function handleUnixCommand(cmd, args) {
-  switch(cmd) {
+  switch (cmd) {
     case 'ls':
       const showHidden = args.includes('-a') || args.includes('--all');
       const path = args.filter(arg => !arg.startsWith('-')).pop() || currentPath;
       const contents = getDirectoryContents(path, showHidden);
-      
+
       if (!contents) {
         return [`<span class="error">ls: cannot access '${path}': No such file or directory</span>`];
       }
-      
+
       return ["<br>", ...contents, "<br>"];
-      
+
     case 'cd':
       const newPath = args[0] || "~";
-      
+
       if (newPath === "..") {
         const pathParts = currentPath.split('/');
         if (pathParts.length > 1) {
@@ -291,63 +368,63 @@ function handleUnixCommand(cmd, args) {
         }
         return [`<span class="success">Changed directory to ${currentPath}</span>`];
       }
-      
+
       // Handle absolute paths
-      const targetPath = newPath.startsWith('/') || newPath.startsWith('~') 
-        ? newPath 
+      const targetPath = newPath.startsWith('/') || newPath.startsWith('~')
+        ? newPath
         : `${currentPath === '~' ? '' : currentPath}/${newPath}`;
-      
+
       const dir = getDirectoryContents(targetPath);
       if (!dir) {
         return [`<span class="error">cd: no such directory: ${newPath}</span>`];
       }
-      
+
       currentPath = targetPath;
       return [`<span class="success">Changed directory to ${currentPath}</span>`];
-      
+
     case 'pwd':
       return [`<span class="white">${currentPath}</span>`];
-      
+
     case 'cat':
       if (!args.length) {
         return [`<span class="error">cat: missing file operand</span>`];
       }
-      
-      const filePath = args[0].startsWith('/') || args[0].startsWith('~') 
-        ? args[0] 
+
+      const filePath = args[0].startsWith('/') || args[0].startsWith('~')
+        ? args[0]
         : `${currentPath === '~' ? '' : currentPath}/${args[0]}`;
-      
+
       const content = getFileContent(filePath);
       if (!content) {
         return [`<span class="error">cat: ${args[0]}: No such file</span>`];
       }
-      
-      return ["<br>", content, "<br>"];
-      
+
+      return ["<br>", `<div class="file-content">${content}</div>`, "<br>"];
+
     case 'date':
       return [`<span class="white">${formatDate()}</span>`];
-      
+
     case 'echo':
       return [args.join(' ')];
-      
+
     case 'man':
       if (!args.length) {
         return [`<span class="error">What manual page do you want?</span>`];
       }
-      
+
       const command = args[0];
       if (manPages[command]) {
         return manPages[command];
       } else {
         return [`<span class="error">No manual entry for ${command}</span>`];
       }
-      
+
     case 'vim':
       return [
         "<br>",
         '<span class="white">Opening Neovim...</span>',
         '<div class="vim-container">',
-        '<div class="vim-header"><span class="vim-mode">NORMAL</span><span class="vim-filename">~/'+args[0]+' [+]</span></div>',
+        '<div class="vim-header"><span class="vim-mode">NORMAL</span><span class="vim-filename">~/' + args[0] + ' [+]</span></div>',
         '<div class="vim-content">',
         '<div class="vim-line"><span class="vim-line-number">1</span><span class="vim-line-content"></span></div>',
         '<div class="vim-line"><span class="vim-line-number">2</span><span class="vim-line-content"></span></div>',
@@ -358,22 +435,22 @@ function handleUnixCommand(cmd, args) {
         '<div class="vim-line"><span class="vim-line-number">7</span><span class="vim-line-content">~</span></div>',
         '<div class="vim-line"><span class="vim-line-number">8</span><span class="vim-line-content">~ "' + (args[0] || 'untitled') + '" [New File]</span></div>',
         '</div>',
-        '<div class="vim-footer"><span class="vim-status">"'+args[0]+'" [New] 0L, 0B</span></div>',
+        '<div class="vim-footer"><span class="vim-status">"' + args[0] + '" [New] 0L, 0B</span></div>',
         '</div>',
         "<br>",
         '<span class="white">Simulated Neovim experience. Type any command to exit.</span>'
       ];
-      
+
     case 'find':
       if (args.join(' ') === '/ -name "easter"') {
         activateEasterEgg("matrix");
         return ["<br>", '<span class="success">Searching for Easter eggs...</span>'];
       }
       return ["<br>", '<span class="white">No Easter eggs found in this location. Keep searching!</span>'];
-      
+
     case 'neofetch':
       return neofetch;
-      
+
     default:
       return [`<span class="error">Command not found: ${cmd}</span>`, "<br>", '<span class="white">Type "help" for available commands.</span>'];
   }
@@ -385,16 +462,16 @@ var password = "terminal"; // Define the password
 // Fix the password handling in the processCommand function
 function processCommand() {
   const val = command.innerHTML.trim();
-  
+
   if (val.length === 0) {
     addLine("", "no-animation", 0);
     return;
   }
-  
+
   // Save command to history
   commands.push(val);
   git = commands.length;
-  
+
   // Special Easter Egg Commands
   if (val.toLowerCase() === "nyancat") {
     activateEasterEgg("nyancat");
@@ -402,10 +479,10 @@ function processCommand() {
     command.innerHTML = "";
     return;
   }
-  
+
   addLine(`${val}`, "no-animation", 0);
   command.innerHTML = "";
-  
+
   // Process main commands
   if (val.toLowerCase() === "clear" || val.toLowerCase() === "cls") {
     setTimeout(function() {
@@ -469,18 +546,18 @@ function processCommand() {
     loopLines(motd, "", 80);
     return;
   }
-  
+
   // Handle Unix-like commands
   const cmdParts = val.split(/\s+/);
   const cmd = cmdParts[0].toLowerCase();
   const args = cmdParts.slice(1);
-  
+
   if (["ls", "cd", "pwd", "cat", "vim", "date", "echo", "man", "find", "neofetch"].includes(cmd)) {
     const response = handleUnixCommand(cmd, args);
     loopLines(response, "", 80);
     return;
   }
-  
+
   // Default response
   addLine(`Command not recognized: ${val}`, "error", 100);
   addLine('Type "help" to see available commands', "white", 200);
@@ -491,19 +568,19 @@ function enterKey(e) {
   if (e.keyCode === 13) {
     // Enter key pressed
     e.preventDefault();
-    
+
     if (pw) {
       // We're processing a password
       const enteredPassword = textarea.value.trim();
       console.log("Password entered:", enteredPassword); // Debug line
-      
+
       if (enteredPassword === "terminal") {
         pw = false;
         liner.classList.remove("password");
         command.innerHTML = "";
         textarea.value = "";
         addLine("Access granted. Welcome!", "success", 0);
-        
+
         // Show some "secret" content here
         setTimeout(function() {
           addLine("<br>", "", 0);
@@ -522,14 +599,14 @@ function enterKey(e) {
     } else {
       // Normal command processing
       processCommand();
-      
+
       // Clear both the command element and the textarea
       command.innerHTML = "";
       textarea.value = "";
-      
+
       // Reset git pointer to the end of commands
       git = commands.length;
-      
+
       scrollToBottom();
     }
   } else if (e.keyCode === 38 && !pw) {
@@ -566,11 +643,11 @@ function addLine(text, style, time) {
   setTimeout(function() {
     const next = document.createElement("p");
     next.innerHTML = text;
-    
+
     if (style) {
       next.className = style;
     }
-    
+
     before.parentNode.insertBefore(next, before);
     scrollToBottom();
   }, time);
@@ -586,153 +663,153 @@ function loopLines(name, style, time) {
 function addEasterEggStyles() {
   const style = document.createElement('style');
   style.textContent = `
-    .shooting-star {
-      position: fixed;
-      width: 4px;
-      height: 4px;
-      background: white;
-      border-radius: 50%;
-      box-shadow: 0 0 10px 2px white, 0 0 20px 5px rgba(255, 255, 255, 0.5);
-      animation: shooting 3s linear;
-      z-index: 1000;
-      transform-origin: center;
+                    .shooting-star {
+                      position: fixed;
+                    width: 4px;
+                    height: 4px;
+                    background: white;
+                    border-radius: 50%;
+                    box-shadow: 0 0 10px 2px white, 0 0 20px 5px rgba(255, 255, 255, 0.5);
+                    animation: shooting 3s linear;
+                    z-index: 1000;
+                    transform-origin: center;
     }
-    
-    @keyframes shooting {
-      0% {
-        transform: translate(0, 0) scale(0);
+
+                    @keyframes shooting {
+                      0 % {
+                        transform: translate(0, 0) scale(0);
         opacity: 0;
-      }
+                      }
       10% {
-        transform: translate(20px, 20px) scale(1);
-        opacity: 1;
+                      transform: translate(20px, 20px) scale(1);
+                    opacity: 1;
       }
-      100% {
-        transform: translate(1500px, 1500px) scale(0.5);
-        opacity: 0;
+                    100% {
+                      transform: translate(1500px, 1500px) scale(0.5);
+                    opacity: 0;
       }
     }
-    
-    .nyan-cat {
-      position: fixed;
-      bottom: 50px;
-      left: -150px;
-      animation: nyan 8s linear;
-      z-index: 1000;
+
+                    .nyan-cat {
+                      position: fixed;
+                    bottom: 50px;
+                    left: -150px;
+                    animation: nyan 8s linear;
+                    z-index: 1000;
     }
-    
-    .cat-container {
-      position: relative;
-      width: 150px;
-      height: 100px;
+
+                    .cat-container {
+                      position: relative;
+                    width: 150px;
+                    height: 100px;
     }
-    
-    .cat-image {
-      width: 100px;
-      height: 60px;
-      background-color: #999;
-      border-radius: 10px;
-      position: relative;
-      z-index: 2;
-      background: #FE8;
-      position: relative;
+
+                    .cat-image {
+                      width: 100px;
+                    height: 60px;
+                    background-color: #999;
+                    border-radius: 10px;
+                    position: relative;
+                    z-index: 2;
+                    background: #FE8;
+                    position: relative;
     }
-    
-    .cat-image:before, .cat-image:after {
-      content: '';
-      position: absolute;
-      background: #FE8;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      top: -10px;
+
+                    .cat-image:before, .cat-image:after {
+                      content: '';
+                    position: absolute;
+                    background: #FE8;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 50%;
+                    top: -10px;
     }
-    
-    .cat-image:before {
-      left: 10px;
+
+                    .cat-image:before {
+                      left: 10px;
     }
-    
-    .cat-image:after {
-      right: 10px;
+
+                    .cat-image:after {
+                      right: 10px;
     }
-    
-    .rainbow {
-      height: 20px;
-      width: 150px;
-      background: linear-gradient(to bottom,
-        red 0%, red 16.6%,
-        orange 16.6%, orange 33.2%,
-        yellow 33.2%, yellow 49.8%,
-        green 49.8%, green 66.4%,
-        blue 66.4%, blue 83%,
-        violet 83%, violet 100%);
-      position: absolute;
-      top: 50%;
-      right: 90%;
-      transform: translateY(-50%);
-      z-index: 1;
+
+                    .rainbow {
+                      height: 20px;
+                    width: 150px;
+                    background: linear-gradient(to bottom,
+                    red 0%, red 16.6%,
+                    orange 16.6%, orange 33.2%,
+                    yellow 33.2%, yellow 49.8%,
+                    green 49.8%, green 66.4%,
+                    blue 66.4%, blue 83%,
+                    violet 83%, violet 100%);
+                    position: absolute;
+                    top: 50%;
+                    right: 90%;
+                    transform: translateY(-50%);
+                    z-index: 1;
     }
-    
-    @keyframes nyan {
-      from { left: -150px; }
-      to { left: calc(100% + 150px); }
+
+                    @keyframes nyan {
+                      from {left: -150px; }
+                    to {left: calc(100% + 150px); }
     }
-    
-    .matrix-rain {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.9);
-      z-index: 9999;
-      overflow: hidden;
-      pointer-events: none;
-      /* Add transition property for smooth fade in/out */
-      transition: opacity 1s ease;
+
+                    .matrix-rain {
+                      position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: rgba(0, 0, 0, 0.9);
+                    z-index: 9999;
+                    overflow: hidden;
+                    pointer-events: none;
+                    /* Add transition property for smooth fade in/out */
+                    transition: opacity 1s ease;
     }
-    
-    .matrix-column {
-      position: absolute;
-      top: -100px;
-      width: 30px;
-      color: #0f0;
-      font-family: monospace;
-      font-size: 1.5em;
-      text-align: center;
-      opacity: 0;
-      animation: matrix-fall linear infinite;
+
+                    .matrix-column {
+                      position: absolute;
+                    top: -100px;
+                    width: 30px;
+                    color: #0f0;
+                    font-family: monospace;
+                    font-size: 1.5em;
+                    text-align: center;
+                    opacity: 0;
+                    animation: matrix-fall linear infinite;
     }
-    
-    @keyframes matrix-fall {
-      0% {
-        opacity: 0;
-        transform: translateY(-100px);
-      }
+
+                    @keyframes matrix-fall {
+                      0 % {
+                        opacity: 0;
+                        transform: translateY(-100px);
+                      }
       10% {
-        opacity: 1;
+                      opacity: 1;
       }
-      90% {
-        opacity: 1;
+                    90% {
+                      opacity: 1;
       }
-      100% {
-        opacity: 0;
-        transform: translateY(calc(100vh + 100px));
+                    100% {
+                      opacity: 0;
+                    transform: translateY(calc(100vh + 100px));
       }
     }
-  `;
+                    `;
   document.head.appendChild(style);
 }
 
 function getDirectoryContents(path, showHidden = false) {
   const parts = path.split('/').filter(p => p);
   let current = fileSystem["~"];
-  
+
   // Special case for root path
   if (path === "/" || path === "") {
     return ["<span class='color2'>~</span>"];
   }
-  
+
   // Navigate to the specified path
   for (const part of parts) {
     if (part === "~") continue;
@@ -741,14 +818,14 @@ function getDirectoryContents(path, showHidden = false) {
     }
     current = current.content[part];
   }
-  
+
   let result = [];
-  
+
   // List contents
   if (current && current.content) {
     for (const [name, item] of Object.entries(current.content)) {
       if (name.startsWith('.') && !showHidden) continue;
-      
+
       if (item.type === "directory") {
         result.push(`<span class="color2">${name}/</span>`);
       } else {
@@ -756,14 +833,14 @@ function getDirectoryContents(path, showHidden = false) {
       }
     }
   }
-  
+
   return result.sort();
 }
 
 function getFileContent(path) {
   const parts = path.split('/').filter(p => p);
   let current = fileSystem["~"];
-  
+
   // Navigate to the specified directory
   for (let i = 0; i < parts.length - 1; i++) {
     const part = parts[i];
@@ -773,14 +850,24 @@ function getFileContent(path) {
     }
     current = current.content[part];
   }
-  
+
   // Get the file
   const fileName = parts[parts.length - 1];
   if (!current.content || !current.content[fileName] || current.content[fileName].type !== "file") {
     return null;
   }
-  
-  return current.content[fileName].content;
+
+  // Process the content to properly handle line breaks
+  let content = current.content[fileName].content;
+
+  // Replace all \n with proper HTML line breaks
+  content = content.split('\n').map(line => {
+    // Preserve indentation by replacing spaces with &nbsp;
+    line = line.replace(/^\s+/, match => '&nbsp;'.repeat(match.length));
+    return line;
+  }).join('<br>');
+
+  return content;
 }
 
 // Fix 1: Make sure the help variable and other command outputs are defined
@@ -983,163 +1070,170 @@ function adjustTerminalLayout() {
   var terminalContent = document.getElementById("terminal-content");
   terminalContent.style.height = "calc(100vh - 150px)";
   terminalContent.style.minHeight = "300px";
-  
+
   // Adjust the command line positioning
   var commandLine = document.getElementById("command");
-  commandLine.style.marginTop = "10px";
-  
-  // Make sure the terminal always scrolls to the latest content
-  setTimeout(scrollToBottom, 100);
+  function addCustomStyles() {
+    const style = document.createElement('style');
+    style.textContent = `
+                                                  /* File content styling */
+                                                  .file-content {
+                                                    white - space: pre-wrap;
+                                                  font-family: monospace;
+                                                  line-height: 1.4;
+                                                  margin: 5px 0;
+    }`
+    setTimeout(scrollToBottom, 100);
+  }
+
+  // Call this function after the page loads
+  window.addEventListener("load", adjustTerminalLayout);
+
+  // Add these CSS rules for the vim simulation and better padding
+  function addCustomStyles() {
+    const style = document.createElement('style');
+    style.textContent = `
+                                                  /* Better command prompt padding */
+                                                  #liner {
+                                                    padding: 8px 0;
+                                                  margin - bottom: 5px;
+    }
+
+                                                  #liner::before {
+                                                    padding - right: 12px;
+    }
+
+                                                  /* Improved Vim styling */
+                                                  .vim - container {
+                                                    background - color: #1a1b26;
+                                                  border: 1px solid #414868;
+                                                  border - radius: 4px;
+                                                  margin: 10px 0;
+                                                  font - family: monospace;
+                                                  overflow: hidden;
+                                                  width: 100 %;
+    }
+
+                                                  .vim - header {
+                                                    background - color: #24283b;
+                                                  padding: 4px 8px;
+                                                  display: flex;
+                                                  justify - content: space - between;
+                                                  border - bottom: 1px solid #414868;
+    }
+
+                                                  .vim - mode {
+                                                    background - color: #bb9af7;
+                                                  color: #1a1b26;
+                                                  font - weight: bold;
+                                                  padding: 0 5px;
+                                                  border - radius: 3px;
+    }
+
+                                                  .vim - filename {
+                                                    color: #c0caf5;
+    }
+
+                                                  .vim - content {
+                                                    padding: 5px 0;
+                                                  min - height: 180px;
+    }
+
+                                                  .vim - line {
+                                                    display: flex;
+                                                  padding: 1px 0;
+    }
+
+                                                  .vim - line - number {
+                                                    color: #565f89;
+                                                  width: 30px;
+                                                  text - align: right;
+                                                  padding - right: 8px;
+                                                  user - select: none;
+    }
+
+                                                  .vim - line - content {
+                                                    color: #c0caf5;
+                                                  flex: 1;
+    }
+
+                                                  .vim - footer {
+                                                    background - color: #24283b;
+                                                  padding: 4px 8px;
+                                                  border - top: 1px solid #414868;
+                                                  color: #c0caf5;
+                                                  font - size: 0.9em;
+    }
+
+                                                  .vim - status {
+                                                    display: flex;
+                                                  justify - content: space - between;
+    }
+
+                                                  /* Terminal padding and spacing fixes */
+                                                  #terminal - content {
+                                                    padding: 15px 20px!important;
+    }
+
+                                                  #command {
+                                                    margin - top: 15px!important;
+                                                  margin - bottom: 10px;
+    }
+
+                                                  /* Project card styling */
+                                                  .project - card {
+                                                    background - color: rgba(30, 30, 30, 0.6);
+                                                  border - left: 3px solid #bb9af7;
+                                                  margin: 10px 0;
+                                                  padding: 10px 15px;
+                                                  border - radius: 0 4px 4px 0;
+                                                  transition: all 0.3s ease;
+    }
+
+                                                  .project - card:hover {
+                                                    background - color: rgba(40, 40, 40, 0.8);
+                                                  transform: translateX(5px);
+    }
+
+                                                  .project - title {
+                                                    color: #7aa2f7;
+                                                  font - weight: bold;
+                                                  font - size: 1.1em;
+    }
+
+                                                  .project - lang {
+                                                    background - color: #414868;
+                                                  color: #c0caf5;
+                                                  padding: 2px 6px;
+                                                  border - radius: 3px;
+                                                  font - size: 0.8em;
+                                                  margin - left: 8px;
+    }
+
+                                                  .project - desc {
+                                                    color: #a9b1d6;
+                                                  margin: 5px 0;
+                                                  font - size: 0.95em;
+    }
+
+                                                  .project - link a {
+                                                    color: #9ece6a;
+                                                  text - decoration: none;
+                                                  font - size: 0.9em;
+    }
+
+                                                  .project - link a:hover {
+                                                    text - decoration: underline;
+    }
+                                                  `;
+
+    document.head.appendChild(style);
+  }
+
+  // Call both layout adjustment functions when page loads
+  window.addEventListener("load", function() {
+    adjustTerminalLayout();
+    addCustomStyles();
+    addEasterEggStyles();
+  });
 }
-
-// Call this function after the page loads
-window.addEventListener("load", adjustTerminalLayout);
-
-// Add these CSS rules for the vim simulation and better padding
-function addCustomStyles() {
-  const style = document.createElement('style');
-  style.textContent = `
-    /* Better command prompt padding */
-    #liner {
-      padding: 8px 0;
-      margin-bottom: 5px;
-    }
-    
-    #liner::before {
-      padding-right: 12px;
-    }
-    
-    /* Improved Vim styling */
-    .vim-container {
-      background-color: #1a1b26;
-      border: 1px solid #414868;
-      border-radius: 4px;
-      margin: 10px 0;
-      font-family: monospace;
-      overflow: hidden;
-      width: 100%;
-    }
-    
-    .vim-header {
-      background-color: #24283b;
-      padding: 4px 8px;
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid #414868;
-    }
-    
-    .vim-mode {
-      background-color: #bb9af7;
-      color: #1a1b26;
-      font-weight: bold;
-      padding: 0 5px;
-      border-radius: 3px;
-    }
-    
-    .vim-filename {
-      color: #c0caf5;
-    }
-    
-    .vim-content {
-      padding: 5px 0;
-      min-height: 180px;
-    }
-    
-    .vim-line {
-      display: flex;
-      padding: 1px 0;
-    }
-    
-    .vim-line-number {
-      color: #565f89;
-      width: 30px;
-      text-align: right;
-      padding-right: 8px;
-      user-select: none;
-    }
-    
-    .vim-line-content {
-      color: #c0caf5;
-      flex: 1;
-    }
-    
-    .vim-footer {
-      background-color: #24283b;
-      padding: 4px 8px;
-      border-top: 1px solid #414868;
-      color: #c0caf5;
-      font-size: 0.9em;
-    }
-    
-    .vim-status {
-      display: flex;
-      justify-content: space-between;
-    }
-    
-    /* Terminal padding and spacing fixes */
-    #terminal-content {
-      padding: 15px 20px !important;
-    }
-    
-    #command {
-      margin-top: 15px !important;
-      margin-bottom: 10px;
-    }
-    
-    /* Project card styling */
-    .project-card {
-      background-color: rgba(30, 30, 30, 0.6);
-      border-left: 3px solid #bb9af7;
-      margin: 10px 0;
-      padding: 10px 15px;
-      border-radius: 0 4px 4px 0;
-      transition: all 0.3s ease;
-    }
-    
-    .project-card:hover {
-      background-color: rgba(40, 40, 40, 0.8);
-      transform: translateX(5px);
-    }
-    
-    .project-title {
-      color: #7aa2f7;
-      font-weight: bold;
-      font-size: 1.1em;
-    }
-    
-    .project-lang {
-      background-color: #414868;
-      color: #c0caf5;
-      padding: 2px 6px;
-      border-radius: 3px;
-      font-size: 0.8em;
-      margin-left: 8px;
-    }
-    
-    .project-desc {
-      color: #a9b1d6;
-      margin: 5px 0;
-      font-size: 0.95em;
-    }
-    
-    .project-link a {
-      color: #9ece6a;
-      text-decoration: none;
-      font-size: 0.9em;
-    }
-    
-    .project-link a:hover {
-      text-decoration: underline;
-    }
-  `;
-  
-  document.head.appendChild(style);
-}
-
-// Call both layout adjustment functions when page loads
-window.addEventListener("load", function() {
-  adjustTerminalLayout();
-  addCustomStyles();
-  addEasterEggStyles();
-});
-
