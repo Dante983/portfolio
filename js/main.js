@@ -906,7 +906,7 @@ var banner = [
   '<span class="success">██║╚██╗██║██║██╔═██╗ ██║   ██║██║     ██╔══██║    ╚════██║██╔══██║╚██╗ ██╔╝██║██║     </span>',
   '<span class="success">██║ ╚████║██║██║  ██╗╚██████╔╝███████╗██║  ██║    ███████║██║  ██║ ╚████╔╝ ██║╚██████╗</span>',
   '<span class="success">╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝    ╚══════╝╚═╝  ╚╝  ╚═══╝  ╚═╝ ╚═════╝</span>',
-  '<span class="index">v1.0.0 - Web Developer Terminal</span>',
+  '<span class="index">v1.0.1 - Web Developer Terminal</span>',
   "<br> ",
   '<span class="color2">Welcome to my interactive web terminal.</span>',
   '<span class="color2">Type</span> <span class="command">\'help\'</span><span class="color2"> to see available commands.</span>',
