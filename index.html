@@ -2,76 +2,143 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>NIKOLA SAVIC | Terminal</title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.6/css/jetbrains-mono.min.css"
+    <meta name="theme-color" content="#0b0f14" />
+    <meta
+      name="description"
+      content="Nikola Savić — PHP and Go developer building reliable web products from Banja Luka."
     />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      media="screen"
-      href="css/style.css"
+    <meta property="og:title" content="Nikola Savić | Software Developer" />
+    <meta
+      property="og:description"
+      content="PHP, Go, Linux, Neovim and tmux. Explore my work in an interactive terminal workspace."
     />
-    <link rel="icon" type="image/x-icon" href="img/fav-icon.png" />
+    <meta property="og:type" content="website" />
+    <title>Nikola Savić | Software Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
 
   <body>
-    <div class="terminal-container">
-      <div class="terminal-header">
-        <div class="terminal-tabs">
-          <div class="terminal-tab active">main.sh</div>
-          <div class="terminal-tab">projects.js</div>
-          <div class="terminal-tab">about.md</div>
+    <a class="skip-link" href="#profile-pane">Skip to portfolio</a>
+
+    <main class="workspace" aria-label="Nikola Savić portfolio workspace">
+      <header class="window-bar">
+        <div class="window-controls" aria-hidden="true">
+          <span class="control close"></span>
+          <span class="control minimize"></span>
+          <span class="control maximize"></span>
         </div>
-        <div class="terminal-controls">
-          <div class="terminal-control minimize"></div>
-          <div class="terminal-control maximize"></div>
-          <div class="terminal-control close"></div>
-        </div>
+        <p class="window-title">nikola@arch: ~/portfolio</p>
+        <p class="window-meta">tmux · portfolio</p>
+      </header>
+
+      <div class="tmux-grid">
+        <section class="pane profile-pane" id="profile-pane" aria-labelledby="profile-title">
+          <header class="pane-header">
+            <span class="pane-index">0:nvim*</span>
+            <span>about.lua</span>
+            <span class="pane-path">~/portfolio</span>
+          </header>
+
+          <div class="editor" aria-label="About Nikola">
+            <ol class="code-lines">
+              <li><span class="syntax-keyword">local</span> developer = {</li>
+              <li class="indent"><span class="syntax-property">name</span> = <span class="syntax-string">"Nikola Savić"</span>,</li>
+              <li class="indent"><span class="syntax-property">role</span> = <span class="syntax-string">"Software Developer"</span>,</li>
+              <li class="indent"><span class="syntax-property">focus</span> = { <span class="syntax-string">"PHP"</span>, <span class="syntax-string">"Go"</span> },</li>
+              <li class="indent"><span class="syntax-property">location</span> = <span class="syntax-string">"Banja Luka, BiH"</span>,</li>
+              <li class="indent"><span class="syntax-property">workflow</span> = { <span class="syntax-string">"Linux"</span>, <span class="syntax-string">"Neovim"</span>, <span class="syntax-string">"tmux"</span> },</li>
+              <li>}</li>
+            </ol>
+
+            <div class="profile-copy">
+              <p class="eyebrow">Software developer · builder · terminal enthusiast</p>
+              <h1 id="profile-title">I build dependable web products and backend systems.</h1>
+              <p>
+                I work across PHP, Laravel and Go, with experience in data-heavy
+                applications, APIs and modern web interfaces, currently with Bay42
+                and Perform[CB]. I care about useful software, clear code and an
+                efficient developer workflow.
+              </p>
+              <nav class="profile-actions" aria-label="Contact and social links">
+                <a class="primary-action" href="mailto:savicn209@gmail.com">email me</a>
+                <a href="https://github.com/Dante983" target="_blank" rel="noreferrer">github</a>
+                <a href="https://www.linkedin.com/in/nikola-savi%C4%87-10b8b9179/" target="_blank" rel="noreferrer">linkedin</a>
+              </nav>
+            </div>
+          </div>
+
+          <footer class="nvim-status" aria-label="Neovim status">
+            <span class="nvim-mode">NORMAL</span>
+            <span>about.lua</span>
+            <span class="status-spacer"></span>
+            <span>utf-8</span>
+            <span>7:1</span>
+          </footer>
+        </section>
+
+        <section class="pane projects-pane" aria-labelledby="projects-title">
+          <header class="pane-header">
+            <span class="pane-index">1:projects</span>
+            <span id="projects-title">GitHub explorer</span>
+            <a href="https://github.com/Dante983?tab=repositories" target="_blank" rel="noreferrer">view all ↗</a>
+          </header>
+          <div class="projects-intro">
+            <p><span class="prompt-mark">❯</span> gh repo list Dante983 --source --limit 4</p>
+            <span id="github-state" class="sync-state" aria-live="polite">syncing</span>
+          </div>
+          <div id="projects-list" class="projects-list" aria-live="polite"></div>
+        </section>
+
+        <section class="pane shell-pane" aria-labelledby="shell-title">
+          <header class="pane-header">
+            <span class="pane-index">2:zsh</span>
+            <span id="shell-title">interactive shell</span>
+            <button id="clear-button" class="text-button" type="button">clear</button>
+          </header>
+          <div id="terminal-output" class="terminal-output" role="log" aria-live="polite"></div>
+          <form id="terminal-form" class="terminal-form" autocomplete="off">
+            <label class="visually-hidden" for="terminal-input">Terminal command</label>
+            <span class="shell-user">visitor@nikola</span>
+            <span class="shell-path">~/portfolio</span>
+            <span class="prompt-mark">❯</span>
+            <input
+              id="terminal-input"
+              name="command"
+              type="text"
+              inputmode="text"
+              spellcheck="false"
+              aria-describedby="terminal-hint"
+            />
+          </form>
+          <p id="terminal-hint" class="terminal-hint">Try <button type="button" data-command="help">help</button>, <button type="button" data-command="projects">projects</button> or <button type="button" data-command="contact">contact</button>.</p>
+        </section>
       </div>
-      
-      <div class="terminal">
-        <div id="terminal-content">
-          <div id="terminal">
-            <p class="color2 margin"><br /></p>
-            <a id="before"></a>
-          </div>
+
+      <footer class="tmux-status" aria-label="tmux status">
+        <div class="session-name">[portfolio]</div>
+        <div class="window-list">
+          <span class="active-window">0:nvim*</span>
+          <span>1:projects</span>
+          <span>2:zsh</span>
         </div>
-        
-        <div id="command" onclick="$('texter').focus();">
-          <textarea
-            type="text"
-            id="texter"
-            onkeyup="typeIt(this, event)"
-            onkeydown="typeIt(this, event); moveIt(this.value.length, event)"
-            onkeypress="typeIt(this, event);"
-            autofocus=""
-          ></textarea>
-          <div id="liner">
-            <span id="typer"></span><b class="cursor" id="cursor">█</b>
-          </div>
+        <div class="tmux-right">
+          <span id="repo-count">37 repos</span>
+          <span id="clock">--:--</span>
+          <span>nikola@arch</span>
         </div>
-        
-        <div class="terminal-statusline">
-          <div class="statusline-left">
-            <div class="statusline-item mode">NORMAL</div>
-            <div class="statusline-item branch">main</div>
-            <div class="statusline-item">visitor@nikolasavic</div>
-          </div>
-          <div class="statusline-right">
-            <div class="statusline-item">UTF-8</div>
-            <div class="statusline-item">JavaScript</div>
-            <div class="statusline-item">100%</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <script src="js/caret.js"></script>
+      </footer>
+    </main>
+
+    <noscript>
+      <p class="noscript-message">JavaScript is required for the project feed and interactive shell. You can still use the contact links above.</p>
+    </noscript>
     <script src="js/commands.js"></script>
     <script src="js/main.js"></script>
   </body>
